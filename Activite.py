@@ -1,27 +1,8 @@
-class Activite:
-	actCode
-	actLib
-	actNivLib
-	comInsee
-	comLib
-	equActivitePraticable
-	equActivitePratique
-	equActiviteSalleSpe
-	equNbEquIdentique
-	equipementId
-
-	def __init__(self, actCode, actLib,	actNivLib, comInsee, comLib, equActivitePraticable, equActivitePratique, equActiviteSalleSpe, equNbEquIdentique, equipementId):
+class Activite(object):
+	
+	def __init__(self, actCode):
 		self.actCode = actCode
-		self.actLib = actLib
-		self.actNivLib = actNivLib
-		self.comInsee = comInsee
-		self.comLib = comLib
-		self.equActivitePraticable = equActivitePraticable
-		self.equActivitePratique = equActivitePratique
-		self.equActiviteSalleSpe = equActiviteSalleSpe
-		self.equNbEquIdentique = equNbEquIdentique
-		self.equipementId = equipementId
-
+		
 	def getActCode(self):
 		return self.actCode
 
@@ -83,5 +64,5 @@ class Activite:
 		self.equipementId = equipementId
 
 	def toString(self):
-		ret = "[\n{0},\n{1},\n{2},\n{3},\n{4},\n{5},\n{6},\n{7},\n{8},\n{9}\n]".format(self.actCode, self.actLib, self.actNivLib, self.comInsee, self.comLib, self.equActivitePraticable, self.equActivitePratique, self.equActiviteSalleSpe, self.equNbEquIdentique, self.equipementId)
+		ret = "[\n\tActoCode: {0},\n\tActLib: {1},\n\tActNivLib: {2},\n\tComInsee: {3},\n\tComLib: {4},\n\tEquActivitePraticable: {5},\n\tEquActivitePratique: {6},\n\tEquActiviteSalleSpe: {7},\n\tEquNbEquIdentique: {8},\n\tEquipementId: {9}\n]".format(self.actCode, self.actLib, self.actNivLib, self.comInsee, self.comLib, self.equActivitePraticable, self.equActivitePratique, self.equActiviteSalleSpe, self.equNbEquIdentique, self.equipementId)
 		print(ret);
