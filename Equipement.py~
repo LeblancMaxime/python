@@ -1,0 +1,44 @@
+class Equipement(object):
+
+	def __init__(self, comInsee):
+		self.comInsee = comInsee
+		
+      def getComInsee(self):
+            return self.comInsee
+
+      def setComInsee(self, comInsee):
+            self.comInsee = comInsee
+
+      def getComLib(self):
+            return self.comLib            
+      
+      def setComLib(self, comLib):
+            self.comLib = comLib
+
+      def getEquipementFiche(self):
+            return self.equipementFiche            
+
+      def setEquipementFiche(self, equipementFiche):
+            self.equipementFiche = equipementFiche
+
+      def getEquipementId(self):
+            return self. equipementId           
+      
+      def setEquipementId(self, equipementId):
+            self.equipementId = equipementId
+
+      def getInsNom(self):
+            return self.insNom            
+
+      def setInsNom(self, insNom):
+            self.insNom = insNom
+
+      def getInsNumeroInstall(self):
+            return self.insNumeroInstall            
+
+      def setInsNumeroInstall(self, insNumeroInstall):
+            self.insNumeroInstall = insNumeroInstall
+
+	# def toString(self):
+	# 	ret = "[\n\tComInsee: {0},\n\tComLib {1},\n\tInsAccessibiliteAucun: {2},\n\tInsAccessibiliteHandiMoteur: {3},\n\tInsAccessibiliteHandiSens: {4},\n\tInsCodePostal: {5},\n\tInsDateMaj: {6},\n\tInsEmpriseFonciere: {7},\n\tInsGardiennee: {8},\n\tInsLibelleVoie: {9}, \n\tInsLieuDit: {10}, \n\tInsMultiCommune: {11}, \n\tInsNbPlaceParking: {12}, \n\tInsNbPlaceParkingHandi: {13}, \n\tInsNoVoie: {14}, \n\tInsNumeroInstall: {15}, \n\tInsPartLibelle: {16}, \n\tInsTransportAutre: {17}, \n\tInsTransportBateau: {18}, \n\tInsTransportBus: {19}, \n\tInsTransportMetro: {20}, \n\tInsTransportTrain: {21}, \n\tInsTransportTram: {22}, \n\tLatitude: {23}, \n\tLongitude: {24}, \n\tNb_Equipements: {25}, \n\tNb_FicheEquipement: {26}, \n\t_l: {27}, \n\tgeo: {28}\n]".format(self.comInsee, self.comLib, self.insAccessibiliteAucun, self.insAccessibiliteHandiMoteur, self.insAccessibiliteHandiSens, self.insCodePostal, self.insDateMaj, self.insEmpriseFonciere, self.insGardiennee, self.insLibelleVoie, self.insLieuDit, self.insMultiCommune, self.insNbPlaceParking, self.insNbPlaceParkingHandi, self.insNoVoie, self.insNumeroInstall, self.insPartLibelle, self.insTransportAutre, self.insTransportBateau, self.insTransportBus, self.insTransportMetro, self.insTransportTrain, self.insTransportTram, self.latitude, self.longitude, self.nb_Equipements, self.nb_FicheEquipement, self._l, self.geo)
+	# 	print(ret);

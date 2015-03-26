@@ -1,0 +1,37 @@
+#On importe
+import json
+import sqlite3
+from Installation import Installation
+
+#On ouvre le fichier json
+jsonfile = open('json/installation.json')
+data = json.load(jsonfile)
+
+# On crée la connexion
+conn = sqlite3.connect('installation.db')
+c = conn.cursor()
+
+# On supprime la table si elle existe et on la recrée
+c.execute("DROP TABLE IF EXISTS installation")
+c.execute("CREATE TABLE installation(comInsee text, comLib text, insCodePostal text, insMultiCommune text, insNbPlaceParking text, insNbPlaceParkingHandi text, insNumeroInstall text, nb_Equipements text, Nb_FicheEquipement text)")
+
+#Pour toutes les installations dans data
+for i in data["data"]:
+	#on crée un installation puis on lui ajoute tous ses attributs
+	installation = Installation(i["ComInsee"])
+	installation.setComLib(i["ComLib"])
+	installation.setInsCodePostal(i["InsCodePostal"])
+	installation.setInsMultiCommune(i["InsMultiCommune"])
+	installation.setInsNbPlaceParking(i["InsNbPlaceParking"])
+	installation.setInsNbPlaceParkingHandi(i["InsNbPlaceParkingHandi"])
+	installation.setInsNumeroInstall(i["InsNumeroInstall"])
+	installation.setNb_Equipements(i["Nb_Equipements"])
+	installation.setNb_FicheEquipement(i["Nb_FicheEquipement"])
+	# On insert dans la base de données
+	c.execute("INSERT INTO installation VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?)",[installation.getComInsee(),installation.getComLib(),installation.getInsCodePostal		(),installation.getInsMultiCommune(),installation.getInsNbPlaceParking(),installation.getInsNbPlaceParkingHandi(),installation.getInsNumeroInstall(),installation.getNb_Equipements(),installation.getNb_FicheEquipement()])
+
+# On commit les données
+conn.commit()
+
+# On ferme la connexion
+conn.close()

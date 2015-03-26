@@ -1,0 +1,33 @@
+#On importe
+import json
+import sqlite3
+from Activite import Activite
+
+#On ouvre le fichier json
+jsonfile = open('json/activite.json')
+data = json.load(jsonfile)
+
+# On crée la connexion
+conn = sqlite3.connect('activite.db')
+c = conn.cursor()
+
+# On supprime la table si elle existe et on la recrée
+c.execute("DROP TABLE IF EXISTS activite")
+c.execute("CREATE TABLE activite(comInsee text, comLib text, actNivLib text, actCode text, actLib text)")
+
+#Pour toutes les activités dans data
+for i in data["data"]:
+	#on crée un activité puis on lui ajoute tous ses attributs
+	activity = Activite(i["ActCode"])
+	activity.setActLib(i["ActLib"])
+	activity.setActNivLib(i["ActNivLib"])
+	activity.setComInsee(i["ComInsee"])
+	activity.setComLib(i["ComLib"])
+	# On insert dans la base de données
+	c.execute("INSERT INTO activite VALUES (?, ?, ?, ?, ?)",[activity.getComInsee(),activity.getComLib(),activity.getActNivLib(),activity.getActCode(),activity.getActLib()])
+
+# On commit les données
+conn.commit()
+
+# On ferme la connexion
+conn.close()
