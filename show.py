@@ -24,7 +24,7 @@ class WebManager(object):
 					<br /><br />
 					<p>If you want to have informations about a city, click here : <a href='/index_cities/'><input type='button' value='List of cities'></a>
 					<br />
-					If you want to serahc, click here : <a href='/search'><input type='button' value='search'></a></p>
+					If you want to search, click here : <a href='/search'><input type='button' value='search'></a></p>
 				"""
 		return write
 	
