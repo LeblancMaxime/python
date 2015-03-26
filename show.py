@@ -129,7 +129,7 @@ class WebManager(object):
 							<th>Nom de l'activité</th>
 						</tr>
 				"""
-		for row in c.execute("SELECT * FROM activite a WHERE a.comLib='" + str(city) + "' ORDER BY actCode"):
+		for row in c.execute("SELECT * FROM activite WHERE comLib='" + str(city) + "' ORDER BY actCode"):
 			write = write + "<tr><td>" + row[0] + "</td><td>" + row[1] + "</td></tr>"
 		write = write + "</table>"
 		return write
@@ -144,23 +144,28 @@ class WebManager(object):
 		city = list()
 		activity = list()
 		write = """Select a city, then an activity and find where you can do it
-					<form>
-						<select>
-							<option selected='selected'>No city selected</option>"""
-		for row in c.execute("SELECT * FROM installation ORDER BY comLib"):
-			if row[0] not in city:
-				write = write + "<option id='" + str(row[0]) + "'>" + str(row[0]) + "</option>"
-				city.append(row[0])				
-		write = write + """</select>
-						<select>
-							<option selected='selected'>No activity selected</option>
-						"""
-		for row in c.execute("SELECT * FROM activite ORDER BY actLib"):
-			if row[1] not in activity:
-				write = write + "<option id='" + str(row[0]) + "'>" + str(row[1]) + "</option>"
-				activity.append(row[1])
-		write = write + "</select><a href='http://localhost:8080/result/" + <script $option.attr('id').val() /> + "'><input type='button' name='search' id='search' value='search' /></form>"
-		
+					<form method='get' action='http://localhost:8080/result/'>
+						<input type='text' id='city' name='city' />
+						<input type='text' id='activity' name='activity' />
+						<input type='submit' value='search' />
+					</form>"""
+		return write
+
+	@cherrypy.expose
+	def result(self, city, activity):
+		"""
+		Exposes the service at localhost:8080/result/city&activity
+		"""
+		conn = sqlite3.connect('allData.db')
+		c = conn.cursor()
+		write = """<table border='1px solid black' cellspacing='0' cellpadding='0'>
+						<tr>
+							<th>Nom equipement</th>
+						</tr>
+				"""
+		for row in c.execute("SELECT e.insNom FROM equipement e WHERE e.comLib like '%" + str(city) + "%' ORDER BY e.insNom"):
+			write = write + "<tr><td>" + row[0] + "</td></tr>"
+		write = write + "</table>"
 		return write
 
 	@cherrypy.expose
