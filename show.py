@@ -48,6 +48,8 @@ class WebManager(object):
 					There are {0} activities !
 					<br />
 					If you want to go back to the index, click on the button : <a href='http://localhost:8080'><input type='button' value='Index'></a>
+					<br />
+					If you want to see all activities, click on the button : <a href='http://localhost:8080/activity_show_all'><input type='button' value='List of activities'></a>
 				""".format(numberOfItems)
 		return write
 
@@ -93,6 +95,8 @@ class WebManager(object):
 					<br />
 					There are {0} installations !<br />
 					If you want to go back to the index, click on the button : <a href='http://localhost:8080'><input type='button' value='Index'></a>
+					<br />
+					If you want to see all installations, click on the button : <a href='http://localhost:8080/installation_show_all'><input type='button' value='List of equipments'></a>
 				""".format(numberOfItems)
 		return write
 
